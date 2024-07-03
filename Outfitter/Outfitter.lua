@@ -1820,7 +1820,7 @@ end
 -- function called when we load in to the game world, and when we finish a respec
 function Outfitter:TalentsChanged()
 	-- titans grip and hoplite
-	self.CanDualWield2H = C_CharacterAdvancement.IsKnownSpellID(46917) or MysticEnchantUtil.IsEnchantApplied("player", 978217)
+	self.CanDualWield2H = C_CharacterAdvancement.IsKnownSpellID(46917) or MysticEnchantUtil.IsEnchantApplied("player", 978217) or C_CharacterAdvancement.IsKnownSpellID(274267)
 end
 
 function Outfitter:SetScript(pOutfit, pScript)
@@ -6771,7 +6771,7 @@ function Outfitter:ToggleUI(pToggleCharWindow)
 		OutfitterFrame:Hide()
 		
 		if pToggleCharWindow then
-			HideUIPanel(CharacterFrame)
+			HideUIPanel(AscensionCharacterFrame)
 		end
 	else
 		self:OpenUI()
@@ -6779,8 +6779,8 @@ function Outfitter:ToggleUI(pToggleCharWindow)
 end
 
 function Outfitter:OpenUI()
-	ShowUIPanel(CharacterFrame)
-	CharacterFrame_ShowSubFrame("PaperDollFrame")
+	ShowUIPanel(AscensionCharacterFrame)
+	CharacterFrame_ShowSubFrame("PaperDollFrame") -- Should this be "AscensionPaperDollPanel"? Regardless it works even if this line is commented out.
 	OutfitterFrame:Show()
 end
 
